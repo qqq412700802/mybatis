@@ -1,20 +1,13 @@
 package com.lxj.ip.domain;
 
-public class CountryEntity {
-    private Long id;
+import com.lixj.core.AbstractEntity;
+
+public class CountryEntity extends AbstractEntity{
     private String continentCode;
     private String continentName;
     private String countryIsoCode;
     private String countryName;
     private String isInEuropeanUnion;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getContinentCode() {
         return continentCode;
