@@ -2,11 +2,16 @@ package com.lxj;
 
 import static org.junit.Assert.assertTrue;
 
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.core.util.StatusPrinter;
+import com.lxj.ip.domain.UserEntity;
+import com.lxj.ip.mapper.UserMapper;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Unit test for simple App.
@@ -17,13 +22,8 @@ public class AppTest
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        Logger logger = LoggerFactory.getLogger(this.getClass());
-        logger.info("hello log");
-
-        LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
-
-        StatusPrinter.print(loggerContext);
+    public void shouldAnswerWithTrue() throws IOException {
+        System.out.println(System.currentTimeMillis());
     }
+
 }
