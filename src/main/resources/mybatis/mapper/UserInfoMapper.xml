@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxj.ip.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.lxj.ip.domain.UserInfo">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="last_access" jdbcType="BIGINT" property="lastAccess" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lxj.ip.domain.UserInfo">
+    insert into user_info (id, user_id, name, 
+      version, last_access)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{version,jdbcType=INTEGER}, #{lastAccess,jdbcType=BIGINT})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, name, version, last_access
+    from user_info
+  </select>
+</mapper>

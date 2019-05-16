@@ -10,8 +10,8 @@
     </settings>
 
     <typeAliases>
-        <typeAlias alias="country" type="com.lxj.ip.domain.CountryEntity"/>
-        <typeAlias alias="user" type="com.lxj.ip.domain.UserEntity"/>
+        <typeAlias alias="user" type="com.lxj.ip.domain.User"/>
+        <typeAlias alias="user" type="com.lxj.ip.domain.UserInfo"/>
         <typeAlias alias="user_role" type="com.lxj.ip.domain.UserRoleEntity"/>
     </typeAliases>
 
@@ -30,7 +30,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis/mapper/country-mapper.xml"/>
-        <mapper resource="mybatis/mapper/user-mapper.xml"/>
+        <mapper resource="mybatis/mapper/UserMapper.xml"/>
+        <mapper resource="mybatis/mapper/UserInfoMapper.xml"/>
     </mappers>
 </configuration>

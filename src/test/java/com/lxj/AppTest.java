@@ -2,16 +2,12 @@ package com.lxj;
 
 import static org.junit.Assert.assertTrue;
 
-import com.lxj.ip.domain.UserEntity;
 import com.lxj.ip.mapper.UserMapper;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
+import proxy.DynamicProxyHandler;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.lang.reflect.Proxy;
 
 /**
  * Unit test for simple App.
@@ -23,7 +19,20 @@ public class AppTest
      */
     @Test
     public void shouldAnswerWithTrue() throws IOException {
-        System.out.println(System.currentTimeMillis());
+        DynamicProxyHandler dynamicProxyHandler = new DynamicProxyHandler();
+        UserMapper userMapper = (UserMapper) Proxy.newProxyInstance(UserMapper.class.getClassLoader(), new Class[]{UserMapper.class},
+                dynamicProxyHandler);
+
+        userMapper.getById(1L);
     }
+
+//    private <T> T test(int i) {
+//        switch (i) {
+//            case 1:
+//                return new Integer(i);
+//
+//        }
+//        return
+//    }
 
 }

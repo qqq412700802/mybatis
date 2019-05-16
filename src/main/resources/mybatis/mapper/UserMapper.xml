@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxj.ip.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.lxj.ip.domain.User">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="last_access" jdbcType="BIGINT" property="lastAccess" />
+  </resultMap>
+  <resultMap id="UserInfoResultMap" extends="BaseResultMap"  type="com.lxj.ip.domain.User">
+    <association property="userInfo" resultMap="com.lxj.ip.mapper.UserInfoMapper.BaseResultMap" columnPrefix="info_">
+    </association>
+  </resultMap>
+  <insert id="insert" parameterType="com.lxj.ip.domain.User">
+    insert into user_base (id, name, version, 
+      last_access)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{lastAccess,jdbcType=BIGINT})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, version, last_access
+    from user_base
+  </select>
+  <select id="getById" resultMap="UserInfoResultMap">
+    select user_base.id, user_base.name, user_base.version, user_base.last_access,user_info.id
+    info_id,user_info.name info_name
+    from user_base left join user_info on user_base.id = user_info.user_id
+    <where>
+      user_base.id = #{id}
+    </where>
+  </select>
+</mapper>
